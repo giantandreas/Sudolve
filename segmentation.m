@@ -29,15 +29,4 @@ function board_img = segmentation(img)
     end
 
     board_img = imcrop(img, bb);
-
-    gray = rgb2gray(board_img);
-    bw = imbinarize(gray);
-    edgei = edge(bw, "canny");
-
-    edgei = imclose(edgei, strel('line', 2, 0));
-    edgei = imclose(edgei, strel('line', 2, 90));
-
-    edgei = imfill(edgei, 'holes');
-
-    propsnum = regionprops(edgei, 'BoundingBox','Area', 'Image');
 end

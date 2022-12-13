@@ -12,4 +12,4 @@ solution = puzzle.solve()
 # write the solution back to txt file
 f = open('sudoku.txt', 'w')
 np.savetxt(f, solution.board, fmt='%i', delimiter=',', newline='\n')
-
+f.close()
