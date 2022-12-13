@@ -25,7 +25,6 @@ function numbers = board_reader(img)
             
             if numel(props) == 1
                 number = read_number(props(1).Image);
-                disp(number);
                 numbers(x, y) = number;
             end
 
