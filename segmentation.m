@@ -30,4 +30,24 @@ function board_img = segmentation(img)
 
     board_img = imcrop(img, bb);
 
+    gray = rgb2gray(board_img);
+    bw = imbinarize(gray);
+    edgei = edge(bw, "canny");
+    subplot(2,2,1);
+    imshow(edgei);
+
+    edgei = imclose(edgei, strel('line', 2, 0));
+    edgei = imclose(edgei, strel('line', 2, 90));
+
+    subplot(2,2,2);
+    imshow(edgei);
+
+
+    edgei = imfill(edgei, 'holes');
+    subplot(2,2,3);
+    imshow(edgei);
+
+    propsnum = regionprops(edgei, 'BoundingBox','Area', 'Image');
+    disp(numel(propsnum));
+
 end
